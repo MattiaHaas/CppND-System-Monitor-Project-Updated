@@ -10,7 +10,7 @@ using std::string;
 // OUTPUT: HH:MM:SS
 // REMOVE: [[maybe_unused]] once you define the function
 string Format::ElapsedTime(long seconds) { 
-    long dd, hh, mm, ss, tmp;
+    long hh, mm, ss, tmp;
     string time;
     
     auto divisor = std::div(seconds, (long) 60);
@@ -18,12 +18,9 @@ string Format::ElapsedTime(long seconds) {
     tmp = divisor.quot;
     divisor = std::div(tmp, (long) 60);
     mm = divisor.rem;
-    tmp = divisor.quot;
-    divisor = std::div(tmp, (long) 12);
-    hh = divisor.rem;
-    dd = divisor.quot;
+    hh = divisor.quot;
 
-    time = std::to_string(dd) + " days, " + std::to_string(hh) + ":" + std::to_string(mm) + ":" + std::to_string(ss);
+    time = std::to_string(hh) + ":" + std::to_string(mm) + ":" + std::to_string(ss);
 
     return time;
 }
